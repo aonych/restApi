@@ -26,7 +26,7 @@ public class MovieResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Movie> getTeaBox() {
+	public List<Movie> getMovie() {
 		return movieService.getAll();
 	}
 	
@@ -64,15 +64,14 @@ public class MovieResource {
 	@GET
 	@Path("/show/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Movie view(@PathParam("id") int id) {
-
+	public Movie show(@PathParam("id") int id) {
 		return movieService.getById(id);
 	}
 
 	@GET
 	@Path("/showByCountry/{country}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Movie viewByTitle(@PathParam("country") String country) {
+	public Movie showByTitle(@PathParam("country") String country) {
 		return movieService.getByCountry(country);
 	}
 

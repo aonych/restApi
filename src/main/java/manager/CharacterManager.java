@@ -46,7 +46,7 @@ public class CharacterManager {
 	public boolean isExistCharacter(String name) {
 		int result = Integer.parseInt(entityManager
 				.createQuery("SELECT COUNT(c.id) FROM Character c where c.name=:Name")
-				.setParameter("someName", name).getResultList().get(0).toString());
+				.setParameter("Name", name).getResultList().get(0).toString());
 		if(result != 0) {
 			return true;
 		} else {
@@ -54,9 +54,9 @@ public class CharacterManager {
 		}
 	}
 
-	public Character getByName(String name) {
-		return (Character) entityManager.createQuery("SELECT c FROM Character c WHERE c.name = :Name")
-				.setParameter("searchName", name).getSingleResult();
+	public Character getByType(String type) {
+		return (Character) entityManager.createQuery("SELECT c FROM Character c WHERE c.type = :Type")
+				.setParameter("Type", type).getSingleResult();
 	}
 	
 	public List<Character> getByMovie(int id) {
