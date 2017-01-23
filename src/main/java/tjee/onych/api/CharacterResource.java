@@ -61,12 +61,31 @@ public class CharacterResource {
 	public Character edit(@PathParam("id") int id, @FormParam("name") String name, @FormParam("quality") String quality, 
 			@FormParam("type") String type, @FormParam("movie") int movieID) {
 		Character character = characterService.getById(id);
-		character.setName(name);
-		character.setQuality(quality);
-		character.setType(type);
-		character.setMovie(movieService.getById(movieID));
+		if(name!=null && !name.trim().isEmpty()){
+			character.setName(name);
+		}else{
+			character.setName(character.getName());
+		}
+		
+		if(type!=null && !type.trim().isEmpty()){
+			character.setType(type);
+		}else{
+			character.setType(character.getType());
+		}
+		
+		if(quality!=null && !quality.trim().isEmpty()){
+			character.setQuality(quality);
+		}else{
+			character.setQuality(character.getQuality());
+		}
+		
+		if(movieID!=0){
+			character.setMovie(movieService.getById(movieID));
+		}else{
+			character.setMovie(character.getMovie());
+		}
+		
 		characterService.update(character);
-
 		return character;
 	}
 	

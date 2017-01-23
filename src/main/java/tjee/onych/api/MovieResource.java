@@ -52,12 +52,31 @@ public class MovieResource {
 			@FormParam("country") String country, @FormParam("production") String production,
 			@FormParam("year") int year) {
 		Movie movie = movieService.getById(id);
-		movie.setTitle(title);
-		movie.setCountry(country);
-		movie.setProduction(production);
-		movie.setYear(year);
-		movieService.update(movie);
+		if(title!=null && !title.trim().isEmpty()){
+			movie.setTitle(title);
+		}else{
+			movie.setTitle(movie.getTitle());
+		}
+		
+		if(country!=null && !country.trim().isEmpty()){
+			movie.setCountry(country);
+		}else{
+			movie.setCountry(movie.getCountry());
+		}
+		
+		if(production!=null && !production.trim().isEmpty()){
+			movie.setProduction(production);
+		}else{
+			movie.setProduction(movie.getProduction());
+		}
+		
+		if(year!=0){
+			movie.setYear(year);
+		}else{
+			movie.setYear(movie.getYear());
+		}
 
+		movieService.update(movie);
 		return movie;
 	}
 
