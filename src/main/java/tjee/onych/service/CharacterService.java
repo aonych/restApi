@@ -44,7 +44,7 @@ public class CharacterService {
 		return characterManager.getById(id);
 	}
 
-	public Character getByType(String type) {
+	public List<Character> getByType(String type) {
 		return characterManager.getByType(type);
 	}
 	

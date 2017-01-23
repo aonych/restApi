@@ -47,9 +47,12 @@ public class MovieManager {
 		return entityManager.find(Movie.class, id);
 	}
 
-	public Movie getByCountry(String country) {
-		return (Movie) entityManager.createQuery("SELECT m FROM Movie m WHERE m.country = :Country")
-				.setParameter("Country", country).getSingleResult();
+	@SuppressWarnings("unchecked")
+	public List<Movie> getByCountry(String country) {
+		Query query = entityManager.createQuery("SELECT m FROM Movie m WHERE m.country = :Country")
+				.setParameter("Country", country);
+		List<Movie> movies = query.getResultList();
+		return movies;
 	}
 
 	

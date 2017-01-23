@@ -80,7 +80,7 @@ public class CharacterResource {
 	@GET
 	@Path("/showByType/{type}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Character showByType(@PathParam("type") String type) {
+	public List<Character> showByType(@PathParam("type") String type) {
 		return characterService.getByType(type);
 	}
 

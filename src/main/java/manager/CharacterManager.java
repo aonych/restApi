@@ -53,10 +53,13 @@ public class CharacterManager {
 			return false;
 		}
 	}
-
-	public Character getByType(String type) {
-		return (Character) entityManager.createQuery("SELECT c FROM Character c WHERE c.type = :Type")
-				.setParameter("Type", type).getSingleResult();
+	
+	@SuppressWarnings("unchecked")
+	public List<Character> getByType(String type) {
+		Query query = entityManager.createQuery("SELECT c FROM Character c WHERE c.type = :Type")
+				.setParameter("Type", type);
+		List<Character> character = query.getResultList();
+		return character;
 	}
 	
 	public List<Character> getByMovie(int id) {

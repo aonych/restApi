@@ -38,7 +38,7 @@ public class MovieService {
 		return movieManager.getById(id);
 	}
 	
-	public Movie getByCountry(String country) {	
+	public List<Movie> getByCountry(String country) {	
 		return movieManager.getByCountry(country);
 		
 	}

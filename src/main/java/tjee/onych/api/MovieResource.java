@@ -71,7 +71,7 @@ public class MovieResource {
 	@GET
 	@Path("/showByCountry/{country}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Movie showByTitle(@PathParam("country") String country) {
+	public List<Movie> showByTitle(@PathParam("country") String country) {
 		return movieService.getByCountry(country);
 	}
 
